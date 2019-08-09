@@ -11,7 +11,7 @@ class Clock extends Component{
   componentDidMount() {
     // console.log(this);
     setInterval(
-      () => {console.log(this)} ,
+      this.tick ,
       1000
     );
   }

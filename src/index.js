@@ -6,28 +6,31 @@ import * as serviceWorker from './serviceWorker';
 import Clock from './Clock';
 import Action from './Action';
 
-// function Clock(props) {
-//     return (
-//       <div>
-//         <h1>Hello, world!</h1>
-//         <h2>It is {props.date.toLocaleTimeString()}.</h2>
-//       </div>
-//     );
-//   }
-  
+function ListItem(props) {
+  // Correct! There is no need to specify the key here:
+  return <li>{props.value}</li>;
+}
 
-// function tick() {
-//     ReactDOM.render(
-//       <Clock />,
-//       document.getElementById('root')
-//     );
-//   }
-  
-//   setInterval(tick, 1000);
+function NumberList(props) {
+  const numbers = props.numbers;
+  return (
+    <ul>
+      {
+        numbers.map((number) =>
+        <ListItem key={number.toString()}
+                  value={number} />
+    
+      )
+      }
+    </ul>
+  );
+}
 
-
-ReactDOM.render(<Clock />, document.getElementById('root'));
-
+const numbers = [1, 2, 3, 4, 5];
+ReactDOM.render(
+  <NumberList numbers={numbers} />,
+  document.getElementById('root')
+);
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
 // Learn more about service workers: https://bit.ly/CRA-PWA
